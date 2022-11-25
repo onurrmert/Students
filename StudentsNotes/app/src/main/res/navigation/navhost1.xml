@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navhost1"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.onurmert.studentsnotes.View.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_currentFragment"
+            app:destination="@id/currentFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/currentFragment"
+        android:name="com.onurmert.studentsnotes.View.CurrentFragment"
+        android:label="fragment_current"
+        tools:layout="@layout/fragment_current" >
+        <action
+            android:id="@+id/action_currentFragment_to_studentsFragment"
+            app:destination="@id/studentsFragment" />
+        <action
+            android:id="@+id/action_currentFragment_to_insertFragment"
+            app:destination="@id/insertFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentsFragment"
+        android:name="com.onurmert.studentsnotes.View.StudentsFragment"
+        android:label="fragment_students"
+        tools:layout="@layout/fragment_students" >
+        <argument
+            android:name="studentClass"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_studentsFragment_to_studentDetailFragment"
+            app:destination="@id/studentDetailFragment" />
+        <action
+            android:id="@+id/action_studentsFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/studentDetailFragment"
+        android:name="com.onurmert.studentsnotes.View.StudentDetailFragment"
+        android:label="fragment_student_detail"
+        tools:layout="@layout/fragment_student_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </dialog>
+    <fragment
+        android:id="@+id/insertFragment"
+        android:name="com.onurmert.studentsnotes.View.InsertFragment"
+        android:label="fragment_insert"
+        tools:layout="@layout/fragment_insert" />
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.onurmert.studentsnotes.View.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_updateFragment_to_studentsFragment"
+            app:destination="@id/studentsFragment" />
+    </fragment>
+
+</navigation>
